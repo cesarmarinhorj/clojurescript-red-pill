@@ -1,0 +1,11 @@
+<html>
+  <body>
+    <div id="app">ClojureScript</div>
+    <script type="text/javascript" src="out/main.js"></script>
+    <script>
+        window.asPre = function(obj) {
+            document.getElementById("app").innerHTML = "<pre>" + JSON.stringify(obj, null, 2) + "</pre>";
+        }
+    </script>
+  </body>
+</html>
