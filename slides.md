@@ -337,14 +337,114 @@ Demo of [Figwheel](https://github.com/bhauman/lein-figwheel)
 
     ;;more at: https://himera.herokuapp.com/synonym.html
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ~
 #def can be used for functions
 
     (def hello-world
         (fn [] println "hello world"))
 
-    (def hello-world-anon
-        #(println "hello world"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ~
 #defn
@@ -358,6 +458,40 @@ Demo of [Figwheel](https://github.com/bhauman/lein-figwheel)
         (str
           (:f-name (:name person))
           " says hello")))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ~
 #thread last `->>`
