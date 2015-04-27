@@ -1,53 +1,25 @@
 (ns hello-world.core
-  (:require [clojure.browser.repl :as repl]))
+  (:require
+   [goog.string.format]
+   [clojure.browser.repl :as repl]))
 
 (defonce conn
   (repl/connect "http://localhost:9000/repl"))
 
-(defn say-hello []
-  (println "hello world"))
+(def format goog.string.format)
 
-(def my-name "Amir Rajan")
+(defn say-hello-fn [sayer]
+  (println (format "Hello from %s" (:f-name sayer))))
 
-(def my-dictionary {:name "Amir"})
+(defn say-stuff-fn [sayer stuff]
+  (println (format "%s says %s" (:f-name sayer) stuff)))
 
-(def jane-doe
-  { :name {:f-name "Jane"
-           :l-name "Doe" }})
+(defprotocol ISayStuff
+  (say-hello [sayer])
+  (say-stuff [sayer stuff]))
 
-(def john-doe
-  { :name {:f-name "John"
-           :l-name "Doe" }})
-
-(def jane-doe-twin
-  { :name {:f-name "Jane"
-           :l-name "Doe" }})
-
-(def all-people
-  [jane-doe john-doe jane-doe-twin])
-
-(defn say-hello [person]
-  (println
-   (str
-    (:f-name (:name person))
-    " says hello")))
-
-(defn say-hello-pretty [person]
-  (->> person
-       :name
-       :f-name (str " says hello")
-       println))
-
-(defn say-hello-fixed [person]
-  (->> person
-       :name
-       :f-name
-       ((fn [p] (str p " says hello")))
-       println))
-
-(defn say-hello-anon [person]
-  (->> person
-       :name
-       :f-name
-       (#(str % " says hello"))
-       println))
+(defn reify-sayer [f-name stuff]
+  (reify
+    ISayStuff
+    (say-hello [_] (.alert js/window f-name))
+    (say-stuff [_ _] (.alert js/window (format "%s says %s" f-name stuff)))))

@@ -253,6 +253,21 @@ Demo of [Figwheel](https://github.com/bhauman/lein-figwheel)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ~
 #REPL
 
@@ -367,6 +382,12 @@ Demo of [Figwheel](https://github.com/bhauman/lein-figwheel)
            (#(str % " says hello"))
            println))
 
+    (defn say-hello-goog [person]
+      (->> person :name :f-name
+           (goog.string.format "%s says hello")
+           println))
+
+
 
 
 
@@ -461,3 +482,386 @@ Demo of [Figwheel](https://github.com/bhauman/lein-figwheel)
 
 ~
 #ClojureScript Libraries
+
+- Domina
+- Hiccups
+- Garden
+- More at: https://github.com/clojure/clojurescript/wiki#libraries
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+~
+#Polymorphism
+
+>Spoon Boy: Do not try to bend the spoon. Instead...
+>           only try to realize the truth.
+
+>Neo: What truth?
+
+>Spoon Boy: There is no spoon.
+
+>Neo: There is no spoon?
+
+>Spoon Boy: Then you'll see, that it is not the spoon
+>           that bends, it is only yourself.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+~
+#Records
+
+    (defrecord Person [:f-name :l-name])
+
+    (Person. "Amir" "Rajan")
+
+    (defn create-person [{:keys [f-name l-name]}]
+      (Person. f-name l-name))
+
+    (create-person {:f-name "Amir" :l-name "Rajan"})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+~
+#Protocols
+
+    (defprotocol ISayStuff
+      (say-hello [sayer])
+      (say-stuff [sayer stuff]))
+
+    (defrecord Person [f-name l-name]
+      ISayStuff
+      (say-hello [sayer]
+        (println (goog.string.format "Hello from %s" (:f-name sayer))))
+      (say-stuff [sayer stuff]
+        (println (goog.string.format "%s says %s" (:f-name sayer) stuff))))
+
+    (defn create-person [{:keys [f-name l-name]}]
+      (Person. f-name l-name))
+
+    (def jane-doe-map
+      {:f-name "Jane" :l-name "Doe"})
+
+    (def jane-doe-person
+      (create-person jane-doe-map))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+~
+#Extending Protocols
+
+    (defprotocol ISayStuff
+      (say-hello [sayer])
+      (say-stuff [sayer stuff]))
+
+    (defrecord Person [f-name l-name]
+      ISayStuff
+      (say-hello [sayer]
+        (println (goog.string.format "Hello from %s" (:f-name sayer))))
+      (say-stuff [sayer stuff]
+        (println (goog.string.format "%s says %s" (:f-name sayer) stuff))))
+
+    (extend-type cljs.core/PersistentArrayMap
+      ISayStuff
+      (say-hello [sayer]
+        (println (goog.string.format "Hello from %s" (:f-name sayer))))
+      (say-stuff [sayer stuff]
+        (println (goog.string.format "%s says %s" (:f-name sayer) stuff))))
+
+    (defn create-person [{:keys [f-name l-name]}]
+      (Person. f-name l-name))
+
+    (def jane-doe-map
+      {:f-name "Jane" :l-name "Doe"})
+
+    (def jane-doe-person
+      (create-person jane-doe-map))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+~
+#Cleanup
+
+    (def format goog.string.format)
+
+    (defn say-hello-fn [sayer]
+      (println (format "Hello from %s" (:f-name sayer))))
+
+    (defn say-stuff-fn [sayer stuff]
+      (println (format "%s says %s" (:f-name sayer) stuff)))
+
+    (defprotocol ISayStuff
+      (say-hello [sayer])
+      (say-stuff [sayer stuff]))
+
+    (defrecord Person [f-name l-name]
+      ISayStuff
+      (say-hello [sayer] (say-hello-fn sayer))
+      (say-stuff [sayer stuff] (say-stuff-fn sayer stuff)))
+
+    (defn create-person [{:keys [f-name l-name]}]
+      (Person. f-name l-name))
+
+    (def jane-doe-map
+      {:f-name "Jane" :l-name "Doe"})
+
+    (def jane-doe-person
+      (create-person jane-doe-map))
+
+    (extend-type cljs.core/PersistentArrayMap
+      ISayStuff
+      (say-hello [sayer] (say-hello-fn sayer))
+      (say-stuff [sayer stuff] (say-stuff-fn sayer stuff)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+~
+#Reify
+
+    (def format goog.string.format)
+
+    (defn say-hello-fn [sayer]
+      (println (format "Hello from %s" (:f-name sayer))))
+
+    (defn say-stuff-fn [sayer stuff]
+      (println (format "%s says %s" (:f-name sayer) stuff)))
+
+    (defprotocol ISayStuff
+      (say-hello [sayer])
+      (say-stuff [sayer stuff]))
+
+    (defn reify-sayer [f-name stuff]
+      (reify
+        ISayStuff
+        (say-hello [_] (.alert js/window f-name))
+        (say-stuff [_ _] (.alert js/window (format "%s says %s" f-name stuff)))))
