@@ -21,8 +21,8 @@
 
 (hiccups/defhtml styles []
   [:style (css [:body {:font-family "Verdana"
-                       :font-size "20px"}])])
+                       :font-size "10px"}])])
 
 (dom/destroy! ($/sel "#app >"))
 (dom/append! ($/sel "#app") (styles))
-(dom/append! ($/sel "#app") (my-template-2))
+(dom/append! ($/sel "#app") (my-template))

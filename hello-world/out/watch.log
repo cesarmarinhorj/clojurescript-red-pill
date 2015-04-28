@@ -1,17 +1,6 @@
 Building ...
-... done. Elapsed 0.037428503 seconds
+... done. Elapsed 0.032562713 seconds
 Watching path: src
 Change detected, recompiling ...
 Compiling src/hello_world/core.cljs
-... done. Elapsed 0.080246877 seconds
-Change detected, recompiling ...
-Compiling src/hello_world/core.cljs
-WARNING: say-hello at line 29 is being replaced at line 33 src/hello_world/core.cljs
-... done. Elapsed 0.051095324 seconds
-Change detected, recompiling ...
-Compiling src/hello_world/core.cljs
-WARNING: say-hello at line 29 is being replaced at line 33 src/hello_world/core.cljs
-... done. Elapsed 0.049645397 seconds
-Change detected, recompiling ...
-Compiling src/hello_world/core.cljs
-... done. Elapsed 0.03272322 seconds
+... done. Elapsed 0.14060689 seconds

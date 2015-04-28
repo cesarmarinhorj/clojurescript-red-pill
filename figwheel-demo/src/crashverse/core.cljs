@@ -167,7 +167,7 @@
 
 #_(remove-planets!)
 
-#_(reset-planets!)
+(reset-planets!)
 
 ;; Multiple builds
 

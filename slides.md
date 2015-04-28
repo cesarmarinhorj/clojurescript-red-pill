@@ -69,7 +69,8 @@ src: github.com/amirrajan/clojurescript-quick-start
 
 ##Object Oriented Language
 
-Having a class keyword doesn't make a language object oriented, it makes it class oriented.
+Having a class keyword doesn't make a
+language object oriented, it makes it class oriented.
 
 A class a factory method for generating objects.
 
@@ -396,7 +397,7 @@ Demo of [Figwheel](https://github.com/bhauman/lein-figwheel)
 #def can be used for functions
 
     (def hello-world
-        (fn [] println "hello world"))
+        (fn [] (println "hello world")))
 
 
 
@@ -499,7 +500,8 @@ Demo of [Figwheel](https://github.com/bhauman/lein-figwheel)
     (defn say-hello-pretty [person]
       (->> person
            :name
-           :f-name (str " says hello")
+           :f-name
+           (str " says hello")
            println))
 
     (defn say-hello-fixed [person]
@@ -662,7 +664,7 @@ Demo of [Figwheel](https://github.com/bhauman/lein-figwheel)
 
 
 ~
-#Polymorphism
+#A Quote
 
 >Spoon Boy: Do not try to bend the spoon. Instead...
 >           only try to realize the truth.
@@ -672,6 +674,42 @@ Demo of [Figwheel](https://github.com/bhauman/lein-figwheel)
 >Spoon Boy: There is no spoon.
 
 >Neo: There is no spoon?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+~
+#A Quote
 
 >Spoon Boy: Then you'll see, that it is not the spoon
 >           that bends, it is only yourself.
@@ -735,6 +773,9 @@ Demo of [Figwheel](https://github.com/bhauman/lein-figwheel)
       (Person. f-name l-name))
 
     (create-person {:f-name "Amir" :l-name "Rajan"})
+
+
+
 
 
 
@@ -999,3 +1040,42 @@ Demo of [Figwheel](https://github.com/bhauman/lein-figwheel)
         ISayStuff
         (say-hello [_] (.alert js/window f-name))
         (say-stuff [_ _] (.alert js/window (format "%s says %s" f-name stuff)))))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+~
+#Links
+
+[InfoQ Simple Made Easy](http://www.infoq.com/presentations/Simple-Made-Easy)
+[InfoQ Value of Values](http://www.infoq.com/presentations/Value-Values)
+[InfoQ Design Composition Performance](http://www.infoq.com/presentations/Design-Composition-Performance)
+[InfoQ Core.Async](http://www.infoq.com/presentations/clojure-core-async)
+
+[Quantum Tic Tac Toe](https://github.com/levand/qttt)
