@@ -219,7 +219,7 @@
 (defn move [r-data]
   (om/transact! r-data move-it))
 
-#_(reset-game!)
+(reset-game!)
 
 (defn transer! [st]
   (go

@@ -144,7 +144,7 @@ Hard is a synonym for unfamiliar, "distant".
 - Syntax is hard.
 - Immutability is hard.
 - It goes against the inertia of mind
-  - Classes and immutability are easy
+  - Classes and mutability are easy
 
 ##It's Simple
 

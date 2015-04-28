@@ -17,12 +17,11 @@
   [:ul (for [x (range 1 4)] [:li x])])
 
 (hiccups/defhtml my-template-3 []
-  [:div#content.pretty "hello world"])
+  [:div [:div#content.pretty "hello world"] (my-template-2)])
 
 (hiccups/defhtml styles []
   [:style (css [:body {:font-family "Verdana"
-                       :font-size "10px"}])])
+                       :font-size "20px"}])])
 
-(dom/destroy! ($/sel "#app >"))
 (dom/append! ($/sel "#app") (styles))
-(dom/append! ($/sel "#app") (my-template))
+(dom/append! ($/sel "#app") (my-template-3))

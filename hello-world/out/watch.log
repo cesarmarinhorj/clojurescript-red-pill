@@ -1,6 +1,12 @@
 Building ...
-... done. Elapsed 0.032562713 seconds
+... done. Elapsed 0.03548962 seconds
 Watching path: src
 Change detected, recompiling ...
 Compiling src/hello_world/core.cljs
-... done. Elapsed 0.14060689 seconds
+... done. Elapsed 0.216876652 seconds
+Change detected, recompiling ...
+Compiling src/hello_world/core.cljs
+... done. Elapsed 0.087407858 seconds
+Change detected, recompiling ...
+Compiling src/hello_world/core.cljs
+... done. Elapsed 0.063814844 seconds
